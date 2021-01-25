@@ -1,0 +1,24 @@
+{% load hosts %}
+
+<a href="{% host_url 'posts:list' host 'blog' port '8000' scheme 'http' %}">Blog List</a>
+
+<a href="{% host_url 'posts:list' host 'www' port '8000' scheme 'http' %}">WWW List</a>
+
+
+<a href="{% url 'posts:list' %}">Relative Blog List</a>
+
+
+
+{% for obj in object_list %}
+<div class="row">
+  <div class="col-sm-12">
+    <div class="thumbnail">
+      <div class="caption post-detail-item">
+        {{ obj.title }}
+        <p><a href="{{ obj.get_absolute_url }}" class="btn btn-primary" role="button">View</a></p>
+      </div>
+    </div>
+  </div>
+<hr/>
+</div>
+{% endfor %}
